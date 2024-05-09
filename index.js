@@ -63,11 +63,11 @@ let IsaTeloarivoLafo = 0
 let IsaTeloarivoTsyLafo = 300
 let TeloarivoTotalVolaLafo = 0
 
+//where the magic happens
 numberWithCommas(IraialinaTotalVolaLafo)
 numberWithCommas(DimiarivoTotalVolaLafo)
 numberWithCommas(TeloarivoTotalVolaLafo)
 
-//managing displays
 collapse(CollapsedIraialinaHome,DeveloppedIraialinaHome, IraialinaIco)
 collapse(CollapsedDimiarivoHome,DeveloppedDimiarivoHome, DimiarivoIco)
 collapse(CollapsedTeloarivoHome,DeveloppedTeloarivoHome, TeloarivoIco)
@@ -81,18 +81,29 @@ Billets(36, BilletsIraialina, "iraialina")
 Billets(201, BilletsDimiarivo, "dimiarivo")
 Billets(301, BilletsTeloarivo, "teloarivo")
 
-function Active(Show, FirstToHide,SecondToHide,ThirdToHide, Header, Header2, Header3, Header4){
-        Header.addEventListener("click", function(){
-        Show.style.display = 'flex';
-        Header.style.borderBottom = '#4E4E4E solid 3px';
-        FirstToHide.style.display = 'none';
-        SecondToHide.style.display = 'none';
-        ThirdToHide.style.display = 'none';
 
-        Header2.style.borderBottom = 'none';
-        Header3.style.borderBottom = 'none';
-        Header4.style.borderBottom = 'none';
+function Active(Show,s1,s2,s3, Header,h1, h2, h3 ){
+    let isActive = true
+        Header.addEventListener("click", function(){
+        if(isActive === true){
+            show(Show, Header)
+            hide(s1,h1)
+            hide(s2, h2)
+            hide(s3, h3 )
+            isActive = true
+        } else{
+            isActive = false 
+        }
 })
+}
+function show(container, header){
+    container.style.display = 'flex';
+    header.style.borderBottom = '#4E4E4E solid 3px';
+}
+
+function hide(container, header){
+    container.style.display = 'none';
+    header.style.borderBottom = 'none';
 }
 
 function collapse(Collapse,Develop,Icon){
@@ -120,14 +131,14 @@ function Billets(isaBillet, section, karazany){
         section.append(billet)
         let isClicked = false      
 
-        billet.addEventListener("click", function(){
-            if(!isClicked){
+    billet.addEventListener("click", function(){
+            if(isClicked === false){
                 //styles
                 billet.style.color = 'whitesmoke';
                 billet.style.background = '#59D8BC';
                 billet.style.scale = '120%';
                 billet.style.boxShadow = '5px 4px 0px #D6D6D6';
-                isClicked = true
+                isClicked = true;
 
                 //redirecting counts
                 if(billet.classList.contains('iraialina')){
@@ -144,33 +155,35 @@ function Billets(isaBillet, section, karazany){
                     IsaTeloarivoLafo ++ ;
                     IsaTeloarivoTsyLafo -- ;
                     TeloarivoTotalVolaLafo += 3000;
-
                 }
-            } else{
+            }            
+            else{
                 //styles
                 billet.style.color = '#4E4E4E';
                 billet.style.background = 'white';
                 billet.style.scale = '100%';
                 billet.style.boxShadow = '5px 4px 7px #D6D6D6';
+                isClicked = false
 
                 //redirecting counts
                 if(billet.classList.contains('iraialina')){
                     IsaIraialinaLafo --;
                     IsaIraialinaTsyLafo ++;
                     IraialinaTotalVolaLafo -= 10000;
+                    
 
                 } else if(billet.classList.contains('dimiarivo')){
                     IsaDimiarivoLafo --
                     IsaDimiarivoTsyLafo ++;
                     DimiarivoTotalVolaLafo -= 5000;
+                    
 
                 } else if(billet.classList.contains('teloarivo')){
                     IsaTeloarivoLafo --
                     IsaTeloarivoTsyLafo ++;
-                    TeloarivoTotalVolaLafo -= 3000;
-
-                } 
+                    TeloarivoTotalVolaLafo -= 3000               
             }
+                }
 
         UpdateCountDisplays(LafoIraialinaEl, TsyLafoIraialinaEl, TotalLafoIraialinaEl, IsaIraialinaLafo, IsaIraialinaTsyLafo, IraialinaTotalVolaLafo) 
         UpdateCountDisplays(LafoDimiarivoEl, TsyLafoDimiarivoEl, TotalLafoDimiarivoEl, IsaDimiarivoLafo, IsaDimiarivoTsyLafo, DimiarivoTotalVolaLafo) 
@@ -182,6 +195,7 @@ function Billets(isaBillet, section, karazany){
 }
 
 function UpdateCountDisplays(LafoEl, TsyLafoEl, TotalEl, IsaLafo, IsaTsyLafo, VolaTotal){
+    
         LafoEl[0].innerText = `Lafo:  ${IsaLafo}`
         TsyLafoEl[0].innerText = ` Tsy lafo: ${IsaTsyLafo}` 
         TotalEl[0].innerText = ` Total: ${VolaTotal} Ar` 
@@ -190,7 +204,6 @@ function UpdateCountDisplays(LafoEl, TsyLafoEl, TotalEl, IsaLafo, IsaTsyLafo, Vo
         TsyLafoEl[1].innerText = ` Tsy lafo: ${IsaTsyLafo}` 
         TotalEl[1].innerText = ` Total: ${VolaTotal} Ar`
     }
-
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-      }
+    
+  
+      
