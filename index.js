@@ -182,13 +182,14 @@ function Billets(isaBillet, section, karazany){
 }
 
 function UpdateCountDisplays(LafoEl, TsyLafoEl, TotalEl, IsaLafo, IsaTsyLafo, VolaTotal){
+
         LafoEl[0].innerText = `Lafo:  ${IsaLafo}`
         TsyLafoEl[0].innerText = ` Tsy lafo: ${IsaTsyLafo}` 
-        TotalEl[0].innerText = ` Total: ${VolaTotal} Ar` 
+        TotalEl[0].innerText = ` Total: ${VolaTotal.toLocaleString('en')} Ar` 
 
         LafoEl[1].innerText = `Lafo:  ${IsaLafo}`
         TsyLafoEl[1].innerText = ` Tsy lafo: ${IsaTsyLafo}` 
-        TotalEl[1].innerText = ` Total: ${VolaTotal} Ar`
+        TotalEl[1].innerText = ` Total: ${VolaTotal.toLocaleString('en')} Ar`
     }
 
     function numberWithCommas(x) {
