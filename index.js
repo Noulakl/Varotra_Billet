@@ -63,10 +63,6 @@ let IsaTeloarivoLafo = 0
 let IsaTeloarivoTsyLafo = 300
 let TeloarivoTotalVolaLafo = 0
 
-numberWithCommas(IraialinaTotalVolaLafo)
-numberWithCommas(DimiarivoTotalVolaLafo)
-numberWithCommas(TeloarivoTotalVolaLafo)
-
 //managing displays
 collapse(CollapsedIraialinaHome,DeveloppedIraialinaHome, IraialinaIco)
 collapse(CollapsedDimiarivoHome,DeveloppedDimiarivoHome, DimiarivoIco)
@@ -152,7 +148,7 @@ function Billets(isaBillet, section, karazany){
                 billet.style.background = 'white';
                 billet.style.scale = '100%';
                 billet.style.boxShadow = '5px 4px 7px #D6D6D6';
-
+                isClicked = false
                 //redirecting counts
                 if(billet.classList.contains('iraialina')){
                     IsaIraialinaLafo --;
@@ -191,7 +187,3 @@ function UpdateCountDisplays(LafoEl, TsyLafoEl, TotalEl, IsaLafo, IsaTsyLafo, Vo
         TsyLafoEl[1].innerText = ` Tsy lafo: ${IsaTsyLafo}` 
         TotalEl[1].innerText = ` Total: ${VolaTotal.toLocaleString('en')} Ar`
     }
-
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-      }
