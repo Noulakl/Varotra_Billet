@@ -1,0 +1,125 @@
+/*basic styling*/
+body{
+    max-width: 100%;
+    user-select: none;
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #4E4E4E;
+}
+
+header ul{
+    display: flex;
+    list-style: none;
+}
+
+header ul li{
+    margin: auto;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+header ul li:hover{
+    border-bottom: #4E4E4E solid 3px;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    margin: 15% 0;
+    box-sizing: content-box;
+}
+main div{
+    margin: 10px 0;
+    width: 500px;
+    text-align: center;
+    padding: 20px 30px;
+    border: #707070 solid 2px;
+    border-radius: 15px;
+    transition: "height" 1s;
+}
+main div h2 {
+    display: flex;
+    justify-content: space-around;
+}
+main div:hover{
+    box-shadow: 8px 5px 0 #D6D6D6;
+    cursor: pointer;
+}
+
+.developed{
+    display: none;
+    text-align: left;
+    border:none ;
+}
+
+hr{
+   height: 2px;
+   background: #4E4E4E;
+   border: none;
+}
+
+.developed p{
+    margin-top: 25px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.totaLafo{
+    text-align: right;
+}
+section{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+section container{
+    margin: 0 50px;
+    width: 400px;
+    font-size: 1.5rem;
+    font-weight: bold
+}
+section ul{
+    max-width: 60%;
+    padding: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: left;
+    max-width: 70%;
+    gap:30px;
+    border: #707070 solid 2px;
+    box-shadow: 5px 8px 0px #D6D6D6;
+}
+section li{
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    border: #707070 solid 2px;
+    list-style-type:none;
+    border-radius: 10px;
+    box-shadow: 5px 4px 7px #D6D6D6;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+section li:hover{
+    color:whitesmoke;
+    background: #59D8BC;
+    scale: 120%;
+    box-shadow: 5px 4px 0px #D6D6D6;
+}
+
+/*sections display control*/
+#IraialinaSection{
+    display: none; /*flex*/
+}
+#DimiarivoSection{
+    display: none;
+}
+#TeloarivoSection{
+    display: none;
+}
